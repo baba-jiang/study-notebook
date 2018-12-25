@@ -1,0 +1,32 @@
+from tqdm import tqdm,trange
+from time import sleep
+text = ""
+#tqdm()可以直接包裹iterable的对象
+for char in tqdm(["a", "b", "c", "d"]):
+    text = text + char
+    sleep(0.1)
+    
+#trange(i)相当于tqdm(range(i))
+for i in trange(100):
+    sleep(0.01)
+    
+#可以在循环外面预先定义tqdm的对象
+pbar = tqdm(["a", "b", "c", "d"])
+for char in pbar:
+    pbar.set_description("Processing %s" % char)
+    
+#desc可以指定这个循环的的信息，以便区分。上面的set_description(str)和这个应该是一样的。 
+#leave则表示进度条跑完了之后是否继续保留
+for i in tqdm(range(10), desc='1st loop'):
+    for j in trange(100, desc='2nd loop', leave=False):
+        sleep(0.01)
+  
+#如果要在Jupyter Notebook上面使用，那么要把tqdm换成tqdm_notebook，trange换成tnrange
+from tqdm import tnrange, tqdm_notebook
+from time import sleep
+
+for i in tqdm_notebook(range(10), desc='1st loop'):
+    for j in tnrange(100, desc='2nd loop', leave=False):
+        sleep(0.01)
+        
+#如果在终端运行时需要在循环内打印点什么，就不能直接用print()了，而要用tqdm.write(str)。在Jupyter Notebook里面没有这个问题，还能用print()。
