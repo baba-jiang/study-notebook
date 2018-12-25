@@ -1,0 +1,6 @@
+gpu01  path:  /public6/lilab/student/kudumi
+
+
+comprehensive identification and characterization of human secretome based on integrative proteomics and transcriptomics data
+
+SPRomeDB: a database for high-quality human secreted proteins
